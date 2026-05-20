@@ -46,23 +46,33 @@ void viewexpenses()
              << amount[i] << "\n";
     }
 }
-
+void totalexpenses()
+{
+    double total = 0;
+    for(int i = 0; i < n; i++)
+    {
+        total += amount[i];
+    }
+    cout << "\nTotal Expenses: " << fixed << setprecision(2) << total << "\n";
+}
 int main()
 {
     int choice = 0;
 
-    while(choice != 3)
+    while(choice != 4)
     {
         cout << "\n===== MENU =====";
         cout << "\n1. Add Expense";
         cout << "\n2. View Expenses";
-        cout << "\n3. Exit";
+        cout<< "\n3. Total Expenses";
+        cout << "\n4. Exit";
         cout << "\nEnter choice: ";
         cin >> choice;
 
         if(choice == 1) addexpense();
         else if(choice == 2) viewexpenses();
-        else if(choice == 3) cout << "Exiting...\n";
+        else if(choice == 3) totalexpenses();
+        else if(choice == 4) cout << "Exiting...\n";
         else cout << "Invalid choice!\n";
     }
 
