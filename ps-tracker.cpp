@@ -57,6 +57,9 @@ void totalexpenses()
 }
 int main()
 {
+    cout << "Welcome to Personal Expense Tracker!\n";
+    cout << "===============================\n";
+    cout << "Track your monthly expenses and manage your budget effectively.\n";
     int choice = 0;
 
     while(choice != 4)
