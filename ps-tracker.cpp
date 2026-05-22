@@ -46,6 +46,32 @@ void viewexpenses()
              << amount[i] << "\n";
     }
 }
+void updateexpense()
+{
+    int index;
+    cout << "\nEnter expense number to update (1-" << n << "): ";
+    cin >> index;
+
+    if(index < 1 || index > n)
+    {
+        cout << "Invalid expense number!\n";
+        return;
+    }
+
+    index--; // Convert to 0-based index
+    int m, c;
+    cout << "Enter new month (1-12): ";
+    cin >> m;
+    cout << "Enter new category (1-5): ";
+    cin >> c;
+    cout << "Enter new amount: ";
+    cin >> amount[index];
+
+    selectedmonth[index] = m - 1;
+    selectedcategory[index] = c - 1;
+
+    cout << "Expense updated!\n";
+}   
 void totalexpenses()
 {
     double total = 0;
@@ -62,20 +88,22 @@ int main()
     cout << "Track your monthly expenses and manage your budget effectively.\n";
     int choice = 0;
 
-    while(choice != 4)
+    while(choice != 5)
     {
         cout << "\n===== MENU =====";
         cout << "\n1. Add Expense";
         cout << "\n2. View Expenses";
         cout<< "\n3. Total Expenses";
-        cout << "\n4. Exit";
+        cout << "\n4. Update Expense";
+        cout << "\n5. Exit";
         cout << "\nEnter choice: ";
         cin >> choice;
 
         if(choice == 1) addexpense();
         else if(choice == 2) viewexpenses();
         else if(choice == 3) totalexpenses();
-        else if(choice == 4) cout << "Exiting...\n";
+        else if(choice == 4) updateexpense();
+        else if(choice == 5) cout << "Exiting...\n";
         else cout << "Invalid choice!\n";
     }
 
