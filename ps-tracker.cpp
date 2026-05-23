@@ -58,8 +58,8 @@ void updateexpense()
         return;
     }
 
-    index--; // Convert to 0-based index
-    int m, c;
+    index--; 
+        int m, c;
     cout << "Enter new month (1-12): ";
     cin >> m;
     cout << "Enter new category (1-5): ";
@@ -72,6 +72,7 @@ void updateexpense()
 
     cout << "Expense updated!\n";
 }   
+
 void totalexpenses()
 {
     double total = 0;
@@ -81,6 +82,24 @@ void totalexpenses()
     }
     cout << "\nTotal Expenses: " << fixed << setprecision(2) << total << "\n";
 }
+void viewexpensesbycategory()
+{
+    int c;
+    cout << "\nEnter category to view (1-5): ";
+    cin >> c;
+    c--;
+
+    cout << "\nMonth\t\tAmount\n";
+    for(int i = 0; i < n; i++)
+    {
+        if(selectedcategory[i] == c)
+        {
+            cout << month[selectedmonth[i]] << "\t"
+                 << fixed << setprecision(2)
+                 << amount[i] << "\n";
+        }
+    }
+}
 int main()
 {
     cout << "Welcome to Personal Expense Tracker!\n";
@@ -88,14 +107,15 @@ int main()
     cout << "Track your monthly expenses and manage your budget effectively.\n";
     int choice = 0;
 
-    while(choice != 5)
+    while(choice != 6)
     {
         cout << "\n===== MENU =====";
         cout << "\n1. Add Expense";
         cout << "\n2. View Expenses";
         cout<< "\n3. Total Expenses";
         cout << "\n4. Update Expense";
-        cout << "\n5. Exit";
+        cout << "\n5. View Expenses by Category";
+        cout << "\n6. Exit";
         cout << "\nEnter choice: ";
         cin >> choice;
 
@@ -103,7 +123,7 @@ int main()
         else if(choice == 2) viewexpenses();
         else if(choice == 3) totalexpenses();
         else if(choice == 4) updateexpense();
-        else if(choice == 5) cout << "Exiting...\n";
+        else if(choice == 5) viewexpensesbycategory();
         else cout << "Invalid choice!\n";
     }
 
