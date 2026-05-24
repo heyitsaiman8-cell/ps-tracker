@@ -72,6 +72,21 @@ void updateexpense()
 
     cout << "Expense updated!\n";
 }   
+void showcategorysummary()
+{
+    double categorytotal[5] = {0};
+
+    for(int i = 0; i < n; i++)
+    {
+        categorytotal[selectedcategory[i]] += amount[i];
+    }
+
+    cout << "\nCategory Summary:\n";
+    for(int i = 0; i < 5; i++)
+    {
+        cout << category[i] << ": " << fixed << setprecision(2) << categorytotal[i] << "\n";
+    }
+}
 
 void totalexpenses()
 {
@@ -107,7 +122,7 @@ int main()
     cout << "Track your monthly expenses and manage your budget effectively.\n";
     int choice = 0;
 
-    while(choice != 6)
+    while(choice != 7)
     {
         cout << "\n===== MENU =====";
         cout << "\n1. Add Expense";
@@ -115,7 +130,8 @@ int main()
         cout<< "\n3. Total Expenses";
         cout << "\n4. Update Expense";
         cout << "\n5. View Expenses by Category";
-        cout << "\n6. Exit";
+        cout << "\n6. Category Summary";
+        cout << "\n7. Exit";
         cout << "\nEnter choice: ";
         cin >> choice;
 
@@ -124,6 +140,8 @@ int main()
         else if(choice == 3) totalexpenses();
         else if(choice == 4) updateexpense();
         else if(choice == 5) viewexpensesbycategory();
+        else if(choice == 6) showcategorysummary();
+        else if(choice == 7) cout << "Exiting...\n";
         else cout << "Invalid choice!\n";
     }
 
